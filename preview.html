@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Hub - Learn English</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;font-family:Arial,sans-serif;
+ background:#f5f7fb;color:#202b40;
+}
+header{
+ background:white;padding:20px 7%;
+ display:flex;justify-content:space-between;
+ align-items:center;border-bottom:1px solid #e8edf4;
+}
+.logo{font-size:24px;font-weight:800;color:#3569e8}
+nav a{
+ margin-left:22px;text-decoration:none;
+ color:#526078;font-size:14px;cursor:pointer
+}
+nav a:hover{color:#3569e8}
+.container{max-width:1100px;margin:35px auto;padding:0 20px}
+.hero{
+ background:linear-gradient(120deg,#3569e8,#7097f8);
+ color:white;padding:38px;border-radius:18px;
+}
+.hero h1{font-size:32px;margin:0 0 12px}
+.hero p{line-height:1.6}
+button{
+ border:0;border-radius:9px;padding:12px 20px;
+ background:#3569e8;color:white;cursor:pointer;
+ font-weight:600;
+}
+button:hover{opacity:.88}
+h2{font-size:22px;margin-top:35px}
+.grid{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:18px;margin-top:20px;
+}
+.card{
+ background:white;padding:23px;border-radius:14px;
+ border:1px solid #e9edf4;
+}
+.card h3{margin:10px 0}
+.card p{color:#778399;line-height:1.5;font-size:14px}
+.icon{font-size:28px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:20px}
+.stat{background:white;padding:18px;border-radius:12px}
+.stat strong{display:block;font-size:25px;color:#3569e8;margin-top:8px}
+.panel{
+ background:white;border-radius:14px;padding:25px;
+ margin-top:20px;line-height:1.7
+}
+.word{font-size:23px;color:#3569e8;font-weight:bold}
+input{
+ padding:12px;border:1px solid #dce2ec;
+ border-radius:8px;width:100%;margin:10px 0;
+}
+footer{text-align:center;padding:30px;color:#8490a3}
+@media(max-width:700px){
+ nav{display:none}
+ .grid{grid-template-columns:1fr}
+ .stats{grid-template-columns:1fr}
+ .hero h1{font-size:25px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="logo">ENGLISH HUB.</div>
+ <nav>
+  <a href="#home">Home</a>
+  <a href="#courses">Courses</a>
+  <a href="#vocabulary">Vocabulary</a>
+  <a href="#quiz">Quiz</a>
+ </nav>
+</header>
+
+<main class="container" id="home">
+
+<section class="hero">
+ <h1>Learn English Every Day! 🌟</h1>
+ <p>Small steps every day lead to big improvements.</p>
+ <p>Học tiếng Anh mỗi ngày – tiến bộ từng bước.</p>
+ <button onclick="document.getElementById('lesson').scrollIntoView({behavior:'smooth'})">
+  Start Learning →
+ </button>
+</section>
+
+<h2>Your Learning Dashboard</h2>
+<section class="stats">
+ <div class="stat">📚 Lessons completed<strong id="lessons">0</strong></div>
+ <div class="stat">⭐ Vocabulary learned<strong id="words">0</strong></div>
+ <div class="stat">🎯 Quiz completed<strong id="quizzes">0</strong></div>
+</section>
+
+<h2 id="courses">Explore Your Courses</h2>
+<section class="grid">
+ <div class="card">
+  <div class="icon">📖</div>
+  <h3>Grammar</h3>
+  <p>Learn English grammar rules and practice exercises.</p>
+  <button onclick="showLesson()">Start learning</button>
+ </div>
+ <div class="card">
+  <div class="icon">📝</div>
+  <h3>Word Formation</h3>
+  <p>Improve your vocabulary and word-building skills.</p>
+  <button onclick="showVocabulary()">Explore words</button>
+ </div>
+ <div class="card">
+  <div class="icon">📚</div>
+  <h3>Reading</h3>
+  <p>Develop reading comprehension and learn new expressions.</p>
+  <button onclick="showReading()">Read now</button>
+ </div>
+</section>
+
+<h2>Daily Lesson</h2>
+<section class="panel" id="lesson">
+ <small>LESSON 01 · GRAMMAR · B1</small>
+ <h3>Present Perfect Tense</h3>
+ <p><b>Công thức:</b></p>
+ <p> S + have/has + V3/ed</p>
+ <p><b>Usage:</b> Diễn tả hành động đã xảy ra trong quá khứ
+ và còn liên quan đến hiện tại.</p>
+ <p><b>Example:</b> I have studied English for three years.</p>
+ <p><b>Practice:</b> She ______ (live) here since 2020.</p>
+ <input id="answer" placeholder="Type your answer...">
+ <button onclick="checkAnswer()">Check answer</button>
+ <p id="feedback"></p>
+ <button onclick="completeLesson()">Mark as completed ✓</button>
+</section>
+
+<h2 id="vocabulary">Vocabulary of the Day</h2>
+<section class="panel">
+ <small>DAILY VOCABULARY · B1</small>
+ <div class="word" id="word">Improve</div>
+ <p id="meaning">Cải thiện, nâng cao</p>
+ <p id="example"><i>We should improve our English skills.</i></p>
+ <button onclick="nextWord()">Next word →</button>
+</section>
+
+<h2 id="quiz">Quick Quiz</h2>
+<section class="panel">
+ <p><b>Choose the correct answer:</b></p>
+ <p>He is interested ______ learning English.</p>
+ <button onclick="quizAnswer(false)">A. on</button>
+ <button onclick="quizAnswer(true)">B. in</button>
+ <button onclick="quizAnswer(false)">C. at</button>
+ <p id="quizResult"></p>
+</section>
+
+</main>
+
+<footer>
+ ENGLISH HUB © 2026 · Learn a little, improve a lot.
+</footer>
+
+<script>
+let lessonCount=0,wordCount=0,quizCount=0;
+let index=0;
+
+const vocabulary=[
+ ["Improve","Cải thiện","We should improve our English skills."],
+ ["Achieve","Đạt được","She wants to achieve her goals."],
+ ["Environment","Môi trường","We should protect the environment."],
+ ["Responsible","Có trách nhiệm","Everyone should be responsible."],
+ ["Opportunity","Cơ hội","This is a great opportunity."]
+];
+
+function updateStats(){
+ document.getElementById("lessons").textContent=lessonCount;
+ document.getElementById("words").textContent=wordCount;
+ document.getElementById("quizzes").textContent=quizCount;
+}
+function checkAnswer(){
+ let a=document.getElementById("answer").value.trim().toLowerCase();
+ document.getElementById("feedback").textContent=
+ a==="has lived"?"Correct! Excellent work! 🎉":"Not quite. Try again!";
+}
+function completeLesson(){
+ lessonCount++;
+ updateStats();
+ alert("Lesson completed! Keep going!");
+}
+function nextWord(){
+ index=(index+1)%vocabulary.length;
+ document.getElementById("word").textContent=vocabulary[index][0];
+ document.getElementById("meaning").textContent=vocabulary[index][1];
+ document.getElementById("example").innerHTML="<i>"+vocabulary[index][2]+"</i>";
+ wordCount++;
+ updateStats();
+}
+function quizAnswer(correct){
+ quizCount++;
+ document.getElementById("quizResult").textContent=
+ correct?"Correct! Well done! 🎉":"Incorrect. The correct answer is B. in.";
+ updateStats();
+}
+function showLesson(){
+ document.getElementById("lesson").scrollIntoView({behavior:"smooth"});
+}
+function showVocabulary(){
+ document.getElementById("vocabulary").scrollIntoView({behavior:"smooth"});
+}
+function showReading(){
+ alert("Reading lessons are coming soon!");
+}
+updateStats();
+</script>
+</body>
+</html>
